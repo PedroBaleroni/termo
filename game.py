@@ -1,6 +1,7 @@
 from words import word_array, word_dict
 from unidecode import unidecode
 import random
+from methods import remove_words, best_word
 
 def valid_word (word):
     if len(word) > 5:
@@ -49,19 +50,26 @@ def present_word (word, answer):
                 distinctive_letters[word[i]] -= 1
             else:
                 response[i] = 0
-    print(response)
+    return response
+    
 
 def game():
+
+    all_words = word_array.copy()
     answer = pick_random_word()
     print(answer)
 
     for i in range(6):
+        print("Sugestão: {}".format(best_word(all_words)))
         word = receive_word(input("Digite uma palavra: "))
         if win_condition(word, answer):
             print("Você ganhou!")
             break
         else:
-            present_word(word, answer)
+            guess_answer = present_word(word, answer)
+            all_words = remove_words(all_words, word, guess_answer)
+            print(guess_answer)
+        i += 1
     print("Fim de jogo :(")
 
         
