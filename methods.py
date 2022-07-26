@@ -15,6 +15,8 @@ def word_points (word):
 def best_word ():
 
     default_word = word_array[0]
+    
+   #Comentário
 
     for word in word_array:
         if word_points(word) > word_points(default_word):
