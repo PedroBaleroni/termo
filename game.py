@@ -15,7 +15,7 @@ def valid_word (word):
         else:
             print("A palavra não existe")
             return False
-
+#comentário 2
 def receive_word (raw_word):
     print(unidecode(raw_word))
     if(valid_word(unidecode(raw_word))):
